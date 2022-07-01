@@ -1,0 +1,31 @@
+<ol class="breadcrumb py-3">
+  <li class="breadcrumb-item active" aria-current="page">Home</li>
+</ol>
+
+<h3>Halo, <%= nama %></h3>
+<p>Welcome to my website</p>
+
+<div class="card">
+  <div class="card-header bg-black text-white fw-bold">Daftar Mahasiswa</div>
+  <ul class="list-group list-group-flush">
+    <% if (mahasiswa.length<1) { %>
+    <li class="list-group-item">
+      <p>Data mahasiswa masih kosong</p>
+    </li>
+    <% } else {%> <% mahasiswa.forEach(mhs => { %>
+    <li class="list-group-item d-flex p-3 align-items-center">
+      <div class="left">
+        <img
+          src="https://via.placeholder.com/100/000000/FFFFFF/?text=Z"
+          class="card-img-top"
+          alt="..."
+        />
+      </div>
+      <div class="right ms-5">
+        <p class="fw-bold m-0 p-0">Nama : <%= mhs.name %></p>
+        <p class="text-info">Email : <%= mhs.email %></p>
+      </div>
+    </li>
+    <% }) %> <% } %>
+  </ul>
+</div>

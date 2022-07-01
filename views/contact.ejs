@@ -1,0 +1,56 @@
+<ol class="breadcrumb py-3">
+  <li class="breadcrumb-item"><a href="/">Home</a></li>
+  <li class="breadcrumb-item active" aria-current="page">Contact</li>
+</ol>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <h2>Daftar Contact</h2>
+      <% if (msg.length !== 0) { %>
+      <div class="alert alert-success" role="alert"><%= msg %></div>
+      <% } %>
+      <a href="/contact/add" class="btn btn-primary mb-2"
+        >Tambah Data contact</a
+      >
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nama</th>
+            <th scope="col">No HP</th>
+            <th scope="col">Aksi</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- ga bisa not contact karena arraynya selalu ada maka yang dicek isinya /panjangnya -->
+          <% if (contacts.length === 0) { %>
+          <tr>
+            <td colspan="4">
+              <div class="alert alert-danger fw-bold" role="alert">
+                Data contact masih kosong, diisi dulu dong
+              </div>
+            </td>
+          </tr>
+          <% } %>
+
+          <!-- jika ada tampilkan contact -->
+          <%contacts.forEach((contact,i) => { i++ %>
+          <tr>
+            <th scope="row"><%= i++ %></th>
+            <td><%= contact.nama %></td>
+            <td><%= contact.nohp %></td>
+            <td>
+              <a
+                href="/contact/<%= contact.nama %> "
+                class="btn btn-success badge rounded-pill"
+                ><i class="bi bi-info-circle"></i> detail</a
+              >
+            </td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
